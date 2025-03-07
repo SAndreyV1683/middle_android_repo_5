@@ -12,11 +12,9 @@ import org.koin.android.ext.koin.androidApplication
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
-
 val appModule = module {
     single<NewsService> { SourceProvider.provideNewsService() }
     single<NewsDatabase> { SourceProvider.provideNewsDatabase() }
-    single<DataStoreService> { DataStoreServiceImpl(androidApplication()) }
     single<WorkManagerService> { WorkManagerServiceImp(androidApplication(), get()) }
-    viewModel { AppViewModel(get(), get(), get(), get()) }
+    viewModel { AppViewModel(get(), get(), get()) }
 }
